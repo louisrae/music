@@ -4,11 +4,14 @@ import random
 import time
 
 import vlc
+from mutagen.mp3 import MP3
 
 
-def run_song(name, duration_hours):
+def run_song(name):
+
     track_path = "/Users/louisrae/Documents/dev/music/songs/" + name
-    seconds = duration_hours * 3600
+    audio = MP3(track_path)
+    seconds = int(audio.info.length)
     start = random.randint(1, seconds)
     media_player = vlc.MediaPlayer()
     media = vlc.Media(track_path)
@@ -23,9 +26,8 @@ parser = argparse.ArgumentParser(
     description="Play A Song At A Random Point",
 )
 parser.add_argument("-f", "--file")
-parser.add_argument("-d", "--duration")
 args = parser.parse_args()
 
-run_song(args.file, int(args.duration))
+run_song(args.file)
 
 #
