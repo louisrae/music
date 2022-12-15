@@ -1,5 +1,3 @@
-# importing time module
-import argparse
 import os
 import random
 import time
@@ -35,6 +33,7 @@ def download_yt_long_song(yt_link, song_name):
 def download_yt_playlist(playlist_link, download_folder):
     for video in Playlist(playlist_link).videos:
         video.streams.filter(only_audio=True).all()[0].download(download_folder)
+        print("Song Done")
 
 
 def concat_audio_files(download_folder, output_file):
@@ -44,7 +43,10 @@ def concat_audio_files(download_folder, output_file):
 
 
 d_folder = "/Users/louisrae/Documents/dev/music/d_songs"
-out_file = "/Users/louisrae/Documents/dev/music/songs/f.mp3"
-concat_audio_files(d_folder, out_file)
+out_file = "/Users/louisrae/Documents/dev/music/songs/tens.mp3"
+# concat_audio_files(d_folder, out_file)
 
-# run_with_rand_position()
+# # download_yt_playlist(
+# #     "https://www.youtube.com/playlist?list=PLB6yGgQhklXChwBgWBYrWc2ClKOb5cN0v", d_folder
+# # )
+run_with_rand_position("tens.mp3")
